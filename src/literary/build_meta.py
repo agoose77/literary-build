@@ -14,9 +14,9 @@ def _find_jupyter_path():
 
 
 def _patch_jupyter_path():
-    paths = os.environ.get('JUPYTER_PATH', '').split(os.path.sep)
+    paths = os.environ.get('JUPYTER_PATH', '').split(os.path.pathsep)
     paths = [str(_find_jupyter_path())] + paths
-    os.environ['JUPYTER_PATH'] = os.path.sep.join(paths)
+    os.environ['JUPYTER_PATH'] = os.path.pathsep.join(paths)
 
 
 def _build_literary():
