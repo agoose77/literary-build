@@ -2,6 +2,7 @@ from setuptools.build_meta import (
     build_sdist as orig_build_sdist,
     build_wheel as orig_build_wheel,
 )
+from traitlets.config import Config
 from literary.commands.build import LiteraryBuildApp
 import shutil
 import pathlib
@@ -21,9 +22,12 @@ def _patch_jupyter_path():
 
 def _build_literary():
     _patch_jupyter_path()
-    
-    LiteraryBuildApp.launch_instance(argv=[])
-
+    config = Config({
+      'PackageBuilder': {
+        'clear_generated': True
+      }
+    })
+    LiteraryBuildApp.launch_instance([], config=config)
 
 def build_wheel(wheel_directory, config_settings=None, metadata_directory=None):
     _build_literary()
