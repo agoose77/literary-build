@@ -1,4 +1,4 @@
-# Liteary Build
+# Literary Build Backend
 
 [![pypi-badge][]][pypi] [![gitter-badge][]][gitter]
 
